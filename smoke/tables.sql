@@ -48,3 +48,5 @@ CREATE TABLE ingridients (
     amount INT NOT NULL
 );
 COMMIT;
+
+ALTER TABLE ingridients ADD COLUMN mix_id INT REFERENCES mixes(id) NOT NULL;

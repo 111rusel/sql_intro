@@ -41,7 +41,6 @@ VALUES
     ('Basilic', (SELECT id FROM brends WHERE name = 'Hooligan'), 7),
     ('Maracuia', (SELECT id FROM brends WHERE name = 'Hooligan'), 7);
 
-
 INSERT INTO goos 
     (name, brend_id, strenght)
 VALUES 
@@ -57,4 +56,54 @@ VALUES
     ('Rising Star', (SELECT id FROM brends WHERE name = 'Shoria'), 8),
     ('Asian Lychee', (SELECT id FROM brends WHERE name = 'Shoria'), 8),
     ('Jungle Mix', (SELECT id FROM brends WHERE name = 'Shoria'), 8);
+
+INSERT INTO autors 
+    (name, contact, phone, email)
+VALUES
+    ('Света', NULL, '89854443207', 'sveta@mail.ru'), 
+    ('Руслан', 'vk.com', '+79789371307', 'ruslan@mail.ru'), 
+    ('Илья', 'vk.com', '89854443206', 'ilya@mail.ru'), 
+    ('Радик', 'vk.com', '+79789902523', 'radik@mail.ru'), 
+    ('Данис', 'vk.com', NULL, 'danis@mail.ru');
+
+INSERT INTO mixes
+    (name, strenght, autor_id)
+VALUES
+    ('Pizdec', 6, (SELECT id FROM autors WHERE name = 'Илья')),
+    ('Light', 5, (SELECT id FROM autors WHERE name = 'Илья')),
+    ('Hernya', 6, (SELECT id FROM autors WHERE name = 'Илья')),
+    ('Altaisky Trip', 7, (SELECT id FROM autors WHERE name = 'Света')),
+    ('Imbyr & Lemon', 8, (SELECT id FROM autors WHERE name = 'Света')),
+    ('Marcepan', 9, (SELECT id FROM autors WHERE name = 'Света')),
+    ('Low', 1, (SELECT id FROM autors WHERE name = 'Руслан')),
+    ('Medium', 5, (SELECT id FROM autors WHERE name = 'Руслан')),
+    ('Hard', 8, (SELECT id FROM autors WHERE name = 'Руслан')),
+    ('Deth', 10, (SELECT id FROM autors WHERE name = 'Руслан'));
+
+INSERT INTO ingridients
+    (tabaco_id, goo_id, amount, mix_id)
+VALUES
+    ((SELECT id FROM tabaco WHERE name = 'Caribean Rum'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Pizdec')),
+    ((SELECT id FROM tabaco WHERE name = 'Super Nova'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Pizdec')),
+    ((SELECT id FROM tabaco WHERE name = 'Graipe'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Light')),
+    ((SELECT id FROM tabaco WHERE name = 'Pinapple'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Light')),
+    ((SELECT id FROM tabaco WHERE name = 'Super Nova'), NULL, 100, (SELECT id FROM mixes WHERE name = 'Hernya')),
+    ((SELECT id FROM tabaco WHERE name = 'Kalegraipfruit'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Altaisky Trip')),
+    ((SELECT id FROM tabaco WHERE name = 'Brazilian Tea'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Altaisky Trip')),
+    ((SELECT id FROM tabaco WHERE name = 'Citrus Mix'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Imbyr & Lemon')),
+    ((SELECT id FROM tabaco WHERE name = 'Helthy'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Imbyr & Lemon')),
+    ((SELECT id FROM tabaco WHERE name = 'Honey'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Marcepan')),
+    ((SELECT id FROM tabaco WHERE name = 'Chery'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Marcepan')),
+    ((SELECT id FROM tabaco WHERE name = 'Rum'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Low')),
+    ((SELECT id FROM tabaco WHERE name = 'Honey'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Low')),
+    ((SELECT id FROM tabaco WHERE name = 'Energetic'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Medium')),
+    ((SELECT id FROM tabaco WHERE name = 'Maracuia'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Medium')),
+    ((SELECT id FROM tabaco WHERE name = 'Strawberry'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Hard')),
+    ((SELECT id FROM tabaco WHERE name = 'Watermelon'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Hard')),
+    ((SELECT id FROM tabaco WHERE name = 'Buble Gym'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Deth')),
+    ((SELECT id FROM tabaco WHERE name = 'Red Bomb'), NULL, 50, (SELECT id FROM mixes WHERE name = 'Deth'));
+
+UPDATE ingridients SET 
+    tabaco_id = (SELECT id FROM tabaco WHERE name = 'Supernova')
+WHERE tabaco_id IS NULL;
 
