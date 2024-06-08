@@ -43,3 +43,15 @@ JOIN ingridients ON ingridients.mix_id = mixes.id
 JOIN tabaco ON ingridients.tabaco_id = tabaco.id
 JOIN brends ON tabaco.brend_id = brends.id
 WHERE brends.name = 'Spectrum';
+
+SELECT * FROM users
+JOIN brends ON true;
+
+SELECT * FROM brends
+LEFT JOIN goos  ON goos.brend_id = brends.id;
+
+SELECT * FROM brends
+LEFT JOIN tabaco ON tabaco.brend_id = brends.id
+
+SELECT * FROM autors
+LEFT JOIN mixes ON mixes.autor_id = autors.id where mixes.id is not NULL
