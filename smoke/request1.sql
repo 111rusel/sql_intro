@@ -55,3 +55,28 @@ LEFT JOIN tabaco ON tabaco.brend_id = brends.id
 
 SELECT * FROM autors
 LEFT JOIN mixes ON mixes.autor_id = autors.id where mixes.id is not NULL
+
+SELECT * FROM autors
+LEFT JOIN mixes ON mixes.autor_id = autors.id where mixes.id IS NULL
+
+SELECT * FROM autors 
+RIGHT JOIN brends ON autors.id = brends.id
+
+SELECT brends.name  FROM brends
+JOIN tabaco  ON tabaco.brend_id = brends.id
+GROUP BY brends.name;
+
+SELECT 
+    brends.name, 
+    COUNT (*)  
+FROM brends
+JOIN tabaco  ON tabaco.brend_id = brends.id
+GROUP BY brends.name;
+
+SELECT
+    autors.name,
+    COUNT (*)
+FROM autors 
+JOIN mixes ON mixes.autor_id = autors.id
+GROUP BY autors.name;
+
