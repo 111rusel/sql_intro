@@ -80,3 +80,18 @@ FROM autors
 JOIN mixes ON mixes.autor_id = autors.id
 GROUP BY autors.name;
 
+SELECT name FROM autors
+ORDER BY name ASC;
+
+SELECT name FROM autors
+ORDER BY name DESC;
+
+SELECT tabaco.name, brends.name, tabaco.id FROM tabaco
+JOIN brends ON tabaco.brend_id = brends.id
+ORDER BY brends.name, tabaco.id;
+
+DELETE FROM autors WHERE name = 'Данис';
+
+SELECT * FROM autors ORDER BY id LIMIT 2;
+
+SELECT * FROM autors ORDER BY id LIMIT 2 OFFSET 1; /* LIMIT - коллво строк OFFSET - начиная с какой */
